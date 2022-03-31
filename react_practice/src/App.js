@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useReducer } from "react";
 import "./appStyles.css";
 import styles from "./appStyles.module.css";
 import ArrowFunction from "./components/ES6 Concepts/ArrowFunction";
@@ -47,8 +48,41 @@ import HookCounter from "./components/React/Hooks/useState/HookCounter";
 import HookCounterTwo from "./components/React/Hooks/useState/HookCounterTwo";
 import HookCounterThree from "./components/React/Hooks/useState/HookCounterThree";
 import HookCounterFour from "./components/React/Hooks/useState/HookCounterFour";
-
+import HookCounterOne from "./components/React/Hooks/useEffect/HookCounterOne";
+import ClassCounterOne from "./components/React/Hooks/useEffect/ClassCounterOne";
+import ClassMouse from "./components/React/Hooks/useEffect/ClassMouse";
+import HookMouse from "./components/React/Hooks/useEffect/HookMouse";
+import MouseContainer from "./components/React/Hooks/useEffect/MouseContainer";
+import IntervalClassCounter from "./components/React/Hooks/useEffect/IntervalClassCounter";
+import IntervalHookCounter from "./components/React/Hooks/useEffect/IntervalHookCounter";
+import DataFetching from "./components/React/Hooks/useEffect/DataFetching";
+import ComponentCHooks from "./components/React/Hooks/useContext/ComponentCHooks";
+import CounterOne from "./components/React/Hooks/useReducer/CounterOne";
+import ReducerCounterTwo from "./components/React/Hooks/useReducer/CounterTwo";
+import ReducerCounterThree from "./components/React/Hooks/useReducer/CounterThree";
+import ReducerComponentA from "./components/React/Hooks/useReducer/ReducerComponentA";
+import ReducerComponentB from "./components/React/Hooks/useReducer/ReducerComponentB";
+import ReducerComponentC from "./components/React/Hooks/useReducer/ReducerComponentC";
+import DataFetchingOne from "./components/React/Hooks/useReducer/DataFetchingOne";
+import DataFetchingTwo from "./components/React/Hooks/useReducer/DataFetchingTwo";
+export const UserContext = React.createContext();
+export const ChannelContext = React.createContext();
+export const CountContext = React.createContext();
+const initialState = 0;
+const reducer = (state, action) => {
+  switch (action) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    case "reset":
+      return initialState;
+    default:
+      return state;
+  }
+};
 function App() {
+  const [count, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
       {/* <h1 className='error'>Error</h1>
@@ -102,6 +136,7 @@ function App() {
       {/* <ErrorBoundary>
         <Hero heroName="joker" />
         </ErrorBoundary> */}
+
       {/* <ClickCounter name="Priya"/>
       <HoverCounter/> */}
       {/* <ClickCounterTwo/>
@@ -122,10 +157,43 @@ function App() {
       </UserProvider> */}
       {/* <PostList/> */}
       {/* <PostForm/> */}
-      <HookCounter/>
+      {/* <HookCounter/>
       <HookCounterTwo/>
       <HookCounterThree/>
-      <HookCounterFour/>
+      <HookCounterFour/> */}
+      {/* <ClassCounterOne/> */}
+      {/* <HookCounterOne/> */}
+      {/* <ClassMouse/> */}
+      {/* <HookMouse/> */}
+      {/* <MouseContainer/> */}
+
+      {/* <IntervalClassCounter/>
+      <IntervalHookCounter/> */}
+
+      {/* <DataFetching/> */}
+      {/* <UserContext.Provider value={"Priya"}>
+        <ChannelContext.Provider value={"Pandey"}>
+          <ComponentCHooks />
+        </ChannelContext.Provider>
+      </UserContext.Provider> */}
+
+      {/* <CounterOne/>
+      <ReducerCounterTwo/>
+      <ReducerCounterThree/> */}
+
+      {/* <CountContext.Provider
+        value={{ countState: count, countDispatch: dispatch }}
+      >
+        <div className="App">
+          Count = {count}
+          <ReducerComponentA />
+          <ReducerComponentB />
+          <ReducerComponentC />
+        </div>
+      </CountContext.Provider> */}
+
+      {/* <DataFetchingOne/> */}
+      <DataFetchingTwo/>
     </div>
   );
 }
